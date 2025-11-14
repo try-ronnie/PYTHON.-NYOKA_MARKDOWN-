@@ -384,7 +384,15 @@ Python developers typically opt for pass over return None because it is a statem
 
 
 
+## DEBUGGING USING IPDB
+IPBD is just a more improved version of the python REPL
+THE Best part of it is that you can inject it to your code rather than having to start up your whole REPL and copy paste your code just to see if its working
 
+once you install it via the dependencies or by yourself .... you can use its function anywhere which is 
+```
+ipdb.set_trace()
+```
+ipdb.set_trace() gives you similar functionality to using debugger in a JavaScript application, in that it lets you set a breakpoint in your code that will pause the execution of your program at a certain point so you can inspect the variables, functions, and other context available at a specific place in your code.
 
 
 
