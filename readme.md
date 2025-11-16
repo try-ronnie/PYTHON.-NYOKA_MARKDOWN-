@@ -394,20 +394,131 @@ ipdb.set_trace()
 ```
 ipdb.set_trace() gives you similar functionality to using debugger in a JavaScript application, in that it lets you set a breakpoint in your code that will pause the execution of your program at a certain point so you can inspect the variables, functions, and other context available at a specific place in your code.
 
+it allow for you to work debbug the code above where its placed helping us to know where an error might have occured in the code way much easier
+type c (for continue), and you'll leave your ipdb console and the program will continue to execute.
+In addition to exploring code inside ipdb, you can also manipulate variables and try code out. This is where ipdb really becomes helpful for debugging. If you have a function that isn't doing what it's supposed to do, instead of making changes in your text editor and running the tests over and over until you get it working, you can put a binding in your code and try things out. Once you've figured out how to fix the problem, you then update the code in your text editor accordingly.
+Now, run pytest -s (the -s allows us to see and interact with our code's output during testing) and drop into your ipdb console. Your terminal should look like this:
 
 
 
+## TEST BUILDING USING PYTEST
+Pytest is used primarily for unit testing ......
+Unit testing is a process in which the smallest parts of an application- no matter how large the application- are looked at individually and tested to make sure they operate as intended. Testing is usually carried out by developers themselves, but sometimes by teams of quality assurance (QA) engineers as well.
+Unit tests will typically run on many functions at once with many different types of input. The number of failures with their descriptions will be returned to the tester so that they can update any non-functional code. Tests can be run quickly and as many times as desired. They can also be run on code that doesn't exist yet- this allows for a process called test-driven development (TDD), where failures are used to inform what code to write next.
+
+
+### example of tdd
+Let's say you want to write a function that interpolates into a string: given a name, it should return "Welcome, name!"
+This is fairly simple to write, but even easier to test. Let's start by writing an assertion that will raise an Exception if the return value of our function is incorrect. Open up the Python shell and enter the following:
+```
+def say_hey(name) :
+    pass
+
+assert say_hey('elvis') == 'Welcome! Elvis"
+```
+but for us to write tdd in completion we need to under stand the python test file structure.
+so we first create an app environment that support pytest **pytest.ini** or **setup.py**
+pytest generates its own paths when it is run, and can often struggle to find the files that you wish to test. The inclusion of these files allows us to specify where pytest should start building paths. We give it two options: **.**, the root directory, and **lib**, the application directory.
+Once this is set up, we should create a directory/file to house our tests. This can be named any valid Python package name (no dashes!), but we recommend making it clear that it contains test. Ours is contained in lib/ and is simply called testing/.
+We've put a couple of tests inside of testing: test_string.py and subdirectory/bool_test.py. pytest files must be named either starting with "test_" or ending with "_test". pytest will look in the current directory and every subdirectory for any files that match this naming pattern and execute any tests within.
+The test themselves have to be named fairly strictly: test_{name} for functions and Test{Group} for classes.
+
+
+running pytest...
+pytest can be executed from the command line using the command **pytest**. This will run every test in the current directory and any subdirectories, with paths to separate files being determined by pytest.ini. So long as you execute pytest from one of the directories specified there, you shouldn't have any issues getting your tests to run.
+so remember to pipenv install then check what python version is required then change it 
+then pipenv shell to get into it 
+but how are wwe hgoint ot run specified tests in python ??? 
+
+> RUNNING ALL TESTS - pytest As we saw before, running all tests just requires us to run pytest from the project root directory. If all tests are in a subdirectory (such as lib/ or testing/ in this repo), we can also run pytest from there.
+> RUNNING ALL TESTS IN A DIECTORY - An easier way to run all tests in a directory is to specify the directory after the pytest command:```pytest lib/testing ```
+> RUNNING ALL TESTS IN A FILE - for this one youll just need to specify and tll pytest the path : ```  pytest lib/testing/subdirectory/bool_test.py ```
+> RUNNING ONE TEST IN A FILE - in this case we wont use the unix directory structurre so we wont be nadding any more forward slashes ....... well us e double colon **::** to navigate from the file itself down to the exact functions and classes ... in this case our command should look like this : ``` pytest lib/testing/subdirectory/bool_test.py::test_return_true ```
 
 
 
+lets look at an example of a pytest shell env :
+```
+====== test session starts ======
+platform darwin -- Python 3.8.13, pytest-7.2.1, pluggy-1.0.0
+rootdir: python-p3-pytest, configfile: pytest.ini
+collected 3 items
+
+string_functions.py contains a function "return_string()" that returns a variable of type str. .                                 [ 33%]
+string_functions.py contains a function "interpolate_string()" that takes a string and inserts it into another string. .         [ 66%]
+string_functions.py contains a function "return_true" that returns True. F                                                       [100%]
+
+====== FAILURES ======
+______ test_return_true ______
+
+    def test_return_true():
+        '''in bool_functions, function "return_true" returns True.'''
+       assert return_true() == True
+E       assert False == True
+E        +  where False = return_true()
+
+lib/testing/subdirectory/bool_test.py:7: AssertionError
+
+====== short test summary info ======
+FAILED string_functions.py contains a function "return_true" that returns True. - assert False == True
+====== 1 failed, 2 passed in 0.05s ======
+```
+
+We begin with a message that the test session has started, with some equals signs = building a border. This is to help you find the test results if you need to scroll back at any point. The next two lines simply describe your configuration for your system and pytest- the Python version, the pytest version, the root directory, configuration file, and so on. "collected 3 items" tells us that pytest has found three tests.
+Next, pytest shows us the progress of testing and whether each test passed or failed. **.** after the test description denotes a pass, **F** denotes a failure. The percentages in brackets inform us of how far we have progressed in testing- this can be useful if certain functions in your application take a long time to run.
+✅ **How to read pytest failure output**
+
+Pytest failures ALWAYS follow this pattern:
+
+1️⃣ *The first E line shows the comparison that failed*
+```E       assert False == True```
+This means:
+Your test expected: True
+Your function returned: False
+Pytest rewrites your assert to show you the actual comparison it evaluated.
+
+So YES, you are correct — this is the comparison.
+
+2️⃣ *The second E line shows where the False came from*
+``E        +  where False = return_true()``
+
+This means:
+Pytest calls your function (return_true())
+The value returned from that function was False
+Pytest literally tells you the source of the False
+So this line is basically saying:
+
+**"return_true() evaluated to False, which caused the assert to fail."**
+
+💡 Why does pytest print TWO lines?
+
+Because it wants to explain:
+
+Line 1 → WHAT failed
+assert False == True
+
+Line 2 → WHERE the “False” came from
+where False = return_true()
 
 
+This is SUPER helpful when you have more complex expressions like:
+
+assert process_data(a, b) == expected_result
 
 
+Then pytest might show:
 
+E       assert 42 == 100
+E        +  where 42 = process_data(a, b)
 
-
-
+## CUSTOMIZING PYTEST OUTPUT
+When running commands from the command line, you often have the option to include flags. **Flags are a way to modify your commands- they begin with a dash -, and they're tailored to each command they're used with**. For example, ***cp (copy) has a -r flag that specifies that the copy operation should be recursive- you need to use this to copy a directory and its contents. tree has a -L flag that allows you to specify the depth of subdirectories you want to include in its output.***
+pytest has many flags, but we're just going to focus on the few that will be most helpful to you: 
+>    **-x** **is pytest's "exit" flag.**his executes tests until one fails, then stops executing tests. This is very helpful for test-driven development, as you'll want to focus on developing to one test at a time.
+>    **--pdb**opens the Python debugger when a test fails. It does not open the prettier, improved ipdb, but its basic functions are very similar.
+>    **-s** tells pytest to show the full output for failed tests (i.e. print() statements).
+>    **-q**(for quiet) shortens pytest's output. Running with the -q flag will only show a single line for the summary of the testing session and details of the failures.
+>    **-h** will help you figure out where to place arguments for the pytest command and provide a long list of flags and configurations for use with pytest.
 
 
 
