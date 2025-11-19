@@ -8,35 +8,6 @@ Python code is broken into blocks to be interpreted as a continuation of one ide
 A code block begins with a colon : followed by a newline and an indentation.
 Every indentation in Python code should consist of four spaces. This is long enough to distinguish between indentation levels but short enough to provide space for indentation levels in several nested code blocks.
 PEP 8 guidelines state that indentations in Python should consist of spaces rather than tabs. Tabs are visually interpreted differently in different environments, so they are not advisable in production code.
-## 2.Conditional operators
-Just from the name ... this are methods of controlling flow of execution in our program
- Python has many built-in classes have the following functions that can be used to compare two values:
-
-> : greater than
->= : greater than or equal to
-<: less than
-<=: less than or equal to
-==: equal to
-!=: not equal to
-
-but in python == checks if the objects on both sides are considered equivalent values 
-
-``` 1 == 1  # this is true 
-    '1' == 1 # this is false
-```
-another difference is that the js operator (===) checks if both objects have the same identity , refer to the same space in memory .... so that means that 2 arrays are different to it since it takes them as 2 different identities
-but in python it would return true since it considers them to have the same values and doesnt give af if they are separate arrays in memory
-```[1,2,3] == [1,2,3]
-```
-this would be false in js with the (===) operator
-python will also chrck if an interger has the equivalent calue to a float even though theyre technically different data types :
-``` 1.0 == 1 ```
-
-### LOGICAL OPERATORS
-Python has the same logical operators that youll find in many other languages 
-eg **and:** returns true if both statements are true
-   **or:** returns true if one of the 2 statements is true 
-   **not:** Coerces the data to its boolean equivalent then reverses it 
 
 
 ### Vocabularies
@@ -98,13 +69,13 @@ Metadata about the type (its name, parent classes, etc)
 
 ***picture it like this .... when you type a string Here’s what really happens behind the scenes:***
 
-1.Python sees "Ronnie" — that’s a literal string.
+1-Python sees "Ronnie" — that’s a literal string.
 
-2.It looks up the str class, which is the blueprint for how strings work.
+2-It looks up the str class, which is the blueprint for how strings work.
 
-3.It creates an instance of that class (your actual "Ronnie" object) and puts it in memory.
+3-It creates an instance of that class (your actual "Ronnie" object) and puts it in memory.
 
-4.It binds the name name to that memory location.
+4-It binds the name name to that memory location.
 
 So yes — every typed instance is “connected” to its class through a kind of internal pointer.
 
@@ -523,6 +494,76 @@ pytest has many flags, but we're just going to focus on the few that will be mos
 
 
 
+___________________________________________________________________
+## PYTHON 
+That was just the preview and learning core concepts as now we water down all that we can achieve with python
+
+### INDENTATION IN PYTHON
+**Why Are Indentations Necessary?**
+Python code is broken into blocks to be interpreted as a continuation of one idea- these are like the recipes for each course of your meal. Maybe you need to prepare a dressing and sun-dry some tomatoes for your salad; these can be written as smaller code blocks inside of the block for a recipe as a whole.
+A code block begins with a colon : followed by a newline and an indentation. All code inside of a block must be indented to the same level to be read by the interpreter. Consistent indentation also makes your code much easier to read (just like in JavaScript).
+
+## 2.Conditional operators
+Just from the name ... this are methods of controlling flow of execution in our program
+ Python has many built-in classes have the following functions that can be used to compare two values:
+
+> : greater than
+>= : greater than or equal to
+<: less than
+<=: less than or equal to
+==: equal to
+!=: not equal to
+
+but in python == checks if the objects on both sides are considered equivalent values 
+
+``` 1 == 1  # this is true 
+    '1' == 1 # this is false
+```
+another difference is that the js operator (===) checks if both objects have the same identity , refer to the same space in memory .... so that means that 2 arrays are different to it since it takes them as 2 different identities
+but in python it would return true since it considers them to have the same values and doesnt give af if they are separate arrays in memory
+```[1,2,3] == [1,2,3]
+```
+this would be false in js with the (===) operator
+python will also chrck if an interger has the equivalent calue to a float even though theyre technically different data types :
+``` 1.0 == 1 ```
+
+### LOGICAL OPERATORS
+Python has the same logical operators that youll find in many other languages 
+eg **and:** returns true if both statements are true
+   **or:** returns true if one of the 2 statements is true 
+   **not:** Coerces the data to its boolean equivalent then reverses it 
+
+
+
+### TRUTHY / FALSY VALUES
+As we saw in the lesson on data types, there are many values Python considers falsy:
+
+Empty lists []
+Empty tuples ()
+Empty dictionaries {}
+Empty sets set()
+Empty strings '' or ""
+Zero of any numeric type (0, 0.0)
+None
+And, of course, False
+Python also allows us to use conditional expressions (or ternary operators) to evaluate the truthiness of complex statements in a single line.
+``` 
+age = 1
+is_baby = 'baby' if age<2 else 'not a baby'
+```
+this is the equivalent of an if/else statement:
+```
+age = 1 
+if age < 2:
+    is_baby = 'baby'
+else :
+    is_baby = 'not a baby'
+```
+*Conditional expressions in Python are always of the format:*
+variable = value_if_true ... if condition ... else value_if_false
+Python requires a default value (preceded by the else keyword) in every conditional statement. It may seem like a pain at first, but it helps to prevent unexpected exceptions and Nones as you continue to build your application.
+
+> .get() this is a way use to get a key using a safer method ... if the key isnt there the app wont crash as opposed when you get the key using bracket notation. its synatax is fairly easy ``` user.get('key' ,'default value if key is not found')
 
 
 
@@ -531,20 +572,70 @@ pytest has many flags, but we're just going to focus on the few that will be mos
 
 
 
+### OOP(OBJECT - ORIENTED - PROGRAMMING)
+Object-oriented programming (OOP) is a type of programming based on the concept of **"objects"**, which can contain data, in the form of fields (called attributes or properties), and code, in the form of procedures (called functions or methods). OOP is all about being able to structure code so that its functionality can be shared throughout the application. This is opposed to procedural programming (PP), in which you build programs in sequential order and call procedures when you want shared behavior between pages in the application.
+
+We'll be discussing these basics of OOP in Python:
+
+Classes and instances
+The __init__() method
+Instance methods
+Local variables and instance variables
+Object Attributes and Properties
+Setting instance variables from __init__()
+
+
+***but what really is oop ?***
+>An object-oriented approach to application development makes programs more intuitive to design, faster to develop, more amenable to modification, and easier to understand., Apple Inc.
+>As humans, we’re constantly faced with myriad facts and impressions that we must make sense of. To do so, we must abstract underlying structure away from surface details and discover the fundamental relations at work. Abstractions reveal causes and effects, expose patterns and frameworks, and separate what’s important from what’s not. Object orientation provides an abstraction of the data on which you operate; moreover, it provides a concrete grouping between the data and the operations you can perform with the data—in effect giving the data behavior. , Apple Incc
+
+the idea of oop is to bundling indivudual pieces of information together to form a whole 
+think of it this way , picture a burger
+Now a burger isnt just one bread .... it contains tomatoes , lettuce , pickles , cheese ,and above all the holy grail , the meat ,
+so in that case
+the meal contains attributes(things about it or that make it up) to it and thats the ingredients weve just mention to form the burger
+Object-Oriented Programming, however, does more than just bundle up individual pieces of data that represent a "thing" — it also bundles customized functions that can be performed on that data. These are called **methods: behaviors that an object performs upon its internal data and even upon other code objects.**
 
 
 
+# KEY VOCAB
+
+**Class**: a bundle of data and functionality. Can be copied and modified to accomplish a wide variety of programming tasks.
+**Initialize**: create a working copy of a class using its __init__() method.
+**Instance**: one specific working copy of a class. It is created when a class's __init__() method is called.
+**Object**: the more common name for an instance. The two can usually be used interchangeably.
+**Function:** a series of steps that create, transform, and move data.
+**Method**: a function that is defined inside of a class.
 
 
 
+## Classes and Instances
+Let's say we are building a dog walking app. Our app's users might be dog walkers and dog owners and they can use the app to manage the dog walks. Such an app would need to store information about a potentially large number of dogs.
 
+Our program needs to have a way to bundle up and operate on all the information about a particular dog. And, our program needs to be able to do this again and again. And, once more, we'll need our program to be able to create new bundles of information regarding individual dogs every time a new dog is added to the app.
 
+How can we tell our Python program to deal with these dogs? Well, we can write a Dog class that produces individual dog objects, each of which contains all the information and behaviors of an individual dog.
 
+## Defining a Class
+A Class is considered to be a blueprint that defines how to build the object.he Dog class is different from an individual dog just as the blueprints that show how to build a house are not the actual house.
+Class names begin with capital letters because they are stored in Python constants. If your class name contains two words, the name should be in UpperCamelCase (also called PascalCase if you're feeling fancy)
 
+just to cover it up well make an example of code 
+```
+class Dog:
+    def __init__ (self , name , breed , sex):
+        self.name = name
+        self.breed = breed
+        self.sex = sex
 
+dog_instance = Dog () # this means this is the first instance .... meaning first object created if we want to call another one we 
+print(dog)
+```
+in this example we want to picture it in bits 
+  **Class Dog** - this is the class ... here we tell tell the compiler that we want to create a blueprint of the object we are creating under the name dog .... so inside scope is where then we create the blueprint itself ...
+  **def __init__ (self , name , breed , sex):** this is now how it all goes down ... think of it as the drawings in the blueprint ... in that they give information of how the building (object) will be made with the materials (attributes) that make it or that are need. 
 
-
-
+  
 
 
 
