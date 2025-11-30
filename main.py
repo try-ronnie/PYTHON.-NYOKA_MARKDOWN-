@@ -59,3 +59,57 @@ class Person:
           else:
                print('invalid value')  
 
+#  trying to use this to imitate chess logic 
+class Knight:
+     def __init__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Department ():
+     def __init__(self , name):
+          self.name = name
+          self.employees = []
+          self.manager = None
+
+
+class Employee :
+     def __init__(self, name , position , department):
+          self.name = name
+          self.position = position
+          self._department = department 
+
+     @property
+     def department(self):
+          return self.department
+     @department.setter
+     def department(self , department):
+          if not isinstance(department , Department):
+               print('department has to be an instance of the department class')
+          self.department = department
+          
+engineering = Department('engineering')
+Employee1 = Employee('edward' , 'head of mechanics' ,'mechanics')

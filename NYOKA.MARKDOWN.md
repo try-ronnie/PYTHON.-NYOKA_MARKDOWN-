@@ -634,7 +634,12 @@ print(dog)
 in this example we want to picture it in bits 
   **Class Dog** - this is the class ... here we tell tell the compiler that we want to create a blueprint of the object we are creating under the name dog .... so inside scope is where then we create the blueprint itself ...
   **def __init__ (self , name , breed , sex):** this is now how it all goes down ... think of it as the drawings in the blueprint ... in that they give information of how the building (object) will be made with the materials (attributes) that make it or that are need. 
+  Every time we initialize a new object, the Python interpreter calls a **magic method** called __init__. Magic methods (also called dunder methods due to their double underscores) are special methods that are not meant to be called by developers but are invoked by different cues and operators that act on their objects.
 
+>Cues are basically events or situations where Python decides “ *Ah, time to call this method.* ” Examples: 
+>Creating a new object → ```__init__``` is called
+>Asking for the string representation of an object → ```__str__``` is called
+>Checking object length → ```__len__``` is called**
   
 
 
