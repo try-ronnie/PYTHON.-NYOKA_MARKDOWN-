@@ -1,0 +1,34 @@
+
+class Student:
+    # we need to store all the students we create
+    all = []
+
+    def _init__ (self , name , age):
+        self.name = name
+        self.age = age
+        #teacher is protected since its not from the same constructor
+        self._teacher = None
+        Student.all.append(self)
+    # we need to create getters for the student to know exactly who the teacher is ....
+    @property
+    def teacher (self):
+        return self._teacher
+    @teacher.setter
+    def teacher (self , value ):
+        if not isinstance(value, Teacher):
+            raise TypeError('Teacher must be an instance of its class')
+        else:
+            self._teacher = value
+
+class Teacher:
+    def __init__(self , name):
+        self.name = name
+
+    #inorder to see how many students the teacher has
+    def students(self):
+        return [ students for students in Student.all if Student.teacher == self]
+    # to add a new teacher to  a given student
+    def add_student(self , value):
+        if not isinstance(value , Student):
+            raise TypeError('must be an instance of student')
+        Student.teacher = self

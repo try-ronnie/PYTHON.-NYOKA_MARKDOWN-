@@ -8,6 +8,11 @@ class Department ():
           self.employees = []
     
 
+d1 = Department('google')
+print (d1)
+
+
+
 
 class Employee :
      # what im getting is that in our initialization of employee we pass down department as an attribute ....
