@@ -7,13 +7,20 @@ class Shopper:
     def __init__(self , name):
         self.name = name
         self.grocery_items = []
+
         #we store an empty list that will be appended according to our will
-        #NOTE we dont pass any attributes since we do not expect any value of groceries to be given when our object is created
+        #NOTE we dont pass any attributes since we do not expect any value of groceries to be given when our object is created 
+        #in every instance we create we of a shop it will have a list of its own grocery items 
+
+        #this is a bit different from when the save the memory in class .... this sorts out the memory for the class ... note for the instances of the class
+        #
+
 
 class GroceryItem:
     def __init__ (self , name , price):
         self.name = name
         self.price = price
+
 
 
 #first we create instances for this to work

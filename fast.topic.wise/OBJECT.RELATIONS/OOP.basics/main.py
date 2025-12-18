@@ -45,11 +45,11 @@ print(u1)
 class Person:
      def __init__(self , name , age):
           self.name = name 
-          self.__age = age 
+          self._age = age 
     # we need to get a getter then set it in a setter 
      @property
      def age(self):
-            return self.__age 
+            return self._age 
      # now this is the setter 
      @age.setter
      def age(self, value):
